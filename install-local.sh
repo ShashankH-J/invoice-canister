@@ -3,7 +3,9 @@ dfx start --background --clean
 
 dfx identity new minter
 dfx identity use minter
-export MINT_ACC=$(dfx ledger account-id)
+# export MINT_ACC=$(dfx ledger account-id)
+export MINT_ACC="2425b959dd4ecde1b232cf8ab9016db896c9c09bf79f05b73cbe58a9a9f6790b"
+
 
 dfx identity use default
 export LEDGER_ACC=$(dfx ledger account-id)

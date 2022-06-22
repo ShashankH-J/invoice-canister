@@ -1,4 +1,5 @@
-import Ledger     "canister:ledger";
+// import Ledger     "canister:ledger";
+import L "./Ledger";
 
 import A          "./Account";
 import CRC32      "./CRC32";
@@ -51,16 +52,11 @@ module {
     }
   };
 
-  public type TransferArgs = {
-    memo : Memo;
-    amount : Tokens;
-    fee : Tokens;
-    from_subaccount : ?SubAccount;
-    to : AccountIdentifier;
-    created_at_time : ?TimeStamp;
-  };
+  public type TransferArgs = L.TransferArgs;
 
   public type TransferResult = Result.Result<T.TransferSuccess, TransferError>;
+
+  let Ledger : L.Self = actor("tzq7c-xqaaa-aaaaa-aaamq-cai");
 
   public func transfer (args : TransferArgs) : async TransferResult {
     let result = await Ledger.transfer(args);
